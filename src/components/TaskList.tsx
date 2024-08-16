@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteTask,
   editTask,
   toggleTaskCompletion,
   selectFilteredAndSortedTasks,
   Task,
-} from "../store/slices/taskSlice";
+} from '../store/slices/taskSlice';
 import {
   Box,
   Checkbox,
@@ -23,18 +23,19 @@ import {
   FormControl,
   FormErrorMessage,
   useColorModeValue,
-} from "@chakra-ui/react";
-import { useState } from "react";
-import { MdFiberManualRecord } from "react-icons/md";
-import DeleteConfirmationDialog from "./DeleteConfirmationDialog";
+} from '@chakra-ui/react';
+import { useState } from 'react';
+import { MdFiberManualRecord } from 'react-icons/md';
+import DeleteConfirmationDialog from './DeleteConfirmationDialog';
 
 const TaskList = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectFilteredAndSortedTasks);
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
-  const [editedTitle, setEditedTitle] = useState<string>("");
-  const [editedDescription, setEditedDescription] = useState<string>("");
-  const [editedPriority, setEditedPriority] = useState<Task["priority"]>("Medium");
+  const [editedTitle, setEditedTitle] = useState<string>('');
+  const [editedDescription, setEditedDescription] = useState<string>('');
+  const [editedPriority, setEditedPriority] =
+    useState<Task['priority']>('Medium');
   const [isTitleError, setIsTitleError] = useState<boolean>(false);
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -82,49 +83,45 @@ const TaskList = () => {
           completed: false,
           createdAt: new Date().toISOString(),
           completedAt: null,
-          order: 0
-        })
+          order: 0,
+        }),
       );
       setEditingTaskId(null);
-      setEditedTitle("");
-      setEditedDescription("");
-      setEditedPriority("Medium");
+      setEditedTitle('');
+      setEditedDescription('');
+      setEditedPriority('Medium');
     }
   };
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
     };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const getPriorityColor = (priority: Task["priority"]) => {
+  const getPriorityColor = (priority: Task['priority']) => {
     switch (priority) {
-      case "High":
-        return "red.500";
-      case "Medium":
-        return "yellow.500";
-      case "Low":
-        return "green.500";
+      case 'High':
+        return 'red.500';
+      case 'Medium':
+        return 'yellow.500';
+      case 'Low':
+        return 'green.500';
       default:
-        return "gray.500";
+        return 'gray.500';
     }
   };
 
-  const taskCardBg = useColorModeValue("white", "gray.800");
-  const taskCardTextColor = useColorModeValue("gray.800", "white");
+  const taskCardBg = useColorModeValue('white', 'gray.800');
+  const taskCardTextColor = useColorModeValue('gray.800', 'white');
 
   return (
-    <Box
-      maxHeight="85%"
-      overflowY="auto"
-      pr={2}
-    >
+    <Box maxHeight="85%" overflowY="auto" pr={2}>
       <VStack spacing={4} align="stretch">
         {tasks.map((task) => (
           <Box
@@ -158,28 +155,45 @@ const TaskList = () => {
                 />
                 <Select
                   value={editedPriority}
-                  onChange={(e) => setEditedPriority(e.target.value as Task["priority"])}
+                  onChange={(e) =>
+                    setEditedPriority(e.target.value as Task['priority'])
+                  }
                   mt={2}
                 >
                   <option value="High">High</option>
                   <option value="Medium">Medium</option>
                   <option value="Low">Low</option>
                 </Select>
-                <Button colorScheme="blue" size="sm" onClick={handleSaveEdit} mt={4}>
+                <Button
+                  colorScheme="blue"
+                  size="sm"
+                  onClick={handleSaveEdit}
+                  mt={4}
+                >
                   Save
                 </Button>
               </>
             ) : (
               <>
-                <Checkbox isChecked={task.completed} onChange={() => dispatch(toggleTaskCompletion(task.id))}>
-                  <Text as={task.completed ? "s" : undefined} fontSize="xl" fontWeight="bold">
+                <Checkbox
+                  isChecked={task.completed}
+                  onChange={() => dispatch(toggleTaskCompletion(task.id))}
+                >
+                  <Text
+                    as={task.completed ? 's' : undefined}
+                    fontSize="xl"
+                    fontWeight="bold"
+                  >
                     {task.title}
                   </Text>
                 </Checkbox>
                 <Stack pl={6} mt={2} spacing={1}>
                   <List spacing={1}>
                     <ListItem>
-                      <ListIcon as={MdFiberManualRecord} color={getPriorityColor(task.priority)} />
+                      <ListIcon
+                        as={MdFiberManualRecord}
+                        color={getPriorityColor(task.priority)}
+                      />
                       <Text as="span">{task.description}</Text>
                     </ListItem>
                     <ListItem>
@@ -191,10 +205,21 @@ const TaskList = () => {
                   </List>
                 </Stack>
                 <Box ml={6}>
-                  <Button colorScheme="blue" size="sm" onClick={() => handleEdit(task.id)} mt={2}>
+                  <Button
+                    colorScheme="blue"
+                    size="sm"
+                    onClick={() => handleEdit(task.id)}
+                    mt={2}
+                  >
                     Edit
                   </Button>
-                  <Button colorScheme="red" size="sm" onClick={() => handleDelete(task.id)} mt={2} ml={4}>
+                  <Button
+                    colorScheme="red"
+                    size="sm"
+                    onClick={() => handleDelete(task.id)}
+                    mt={2}
+                    ml={4}
+                  >
                     Delete
                   </Button>
                 </Box>

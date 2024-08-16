@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTask } from "../store/slices/taskSlice";
-import { v4 as uuidv4 } from "uuid";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../store/slices/taskSlice';
+import { v4 as uuidv4 } from 'uuid';
 import {
   Box,
   Button,
@@ -14,12 +14,12 @@ import {
   Textarea,
   VStack,
   Heading,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 const TaskForm = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState<"High" | "Medium" | "Low">("Medium");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState<'High' | 'Medium' | 'Low'>('Medium');
   const dispatch = useDispatch();
 
   const handleAddTask = (e: React.FormEvent) => {
@@ -38,8 +38,8 @@ const TaskForm = () => {
     dispatch(addTask(newTask));
 
     // Clean the input fields after adding the task
-    setTitle("");
-    setDescription("");
+    setTitle('');
+    setDescription('');
   };
 
   return (
@@ -67,7 +67,7 @@ const TaskForm = () => {
         <Select
           value={priority}
           onChange={(e) =>
-            setPriority(e.target.value as "High" | "Medium" | "Low")
+            setPriority(e.target.value as 'High' | 'Medium' | 'Low')
           }
         >
           <option value="High">High</option>

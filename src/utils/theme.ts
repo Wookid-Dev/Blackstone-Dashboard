@@ -1,7 +1,7 @@
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, ThemeConfig } from '@chakra-ui/react';
 
 const config: ThemeConfig = {
-  initialColorMode: "light",
+  initialColorMode: 'light',
   useSystemColorMode: false,
 };
 
@@ -10,8 +10,8 @@ const theme = extendTheme({
   styles: {
     global: (props) => ({
       body: {
-        bg: props.colorMode === "dark" ? "gray.800" : "#f0f4f8",
-        color: props.colorMode === "dark" ? "whiteAlpha.900" : "gray.800",
+        bg: props.colorMode === 'dark' ? 'gray.800' : '#f0f4f8',
+        color: props.colorMode === 'dark' ? 'whiteAlpha.900' : 'gray.800',
       },
     }),
   },
@@ -19,29 +19,29 @@ const theme = extendTheme({
     Alert: {
       baseStyle: {
         container: {
-          borderRadius: "md",
-          boxShadow: "md",
+          borderRadius: 'md',
+          boxShadow: 'md',
         },
       },
       variants: {
         subtle: (props) => ({
           container: {
-            bg: props.colorMode === "dark" ? "gray.700" : "gray.100",
+            bg: props.colorMode === 'dark' ? 'gray.700' : 'gray.100',
           },
         }),
-        "left-accent": {
+        'left-accent': {
           container: {
-            borderLeft: "4px solid",
+            borderLeft: '4px solid',
           },
         },
-        "top-accent": {
+        'top-accent': {
           container: {
-            borderTop: "4px solid",
+            borderTop: '4px solid',
           },
         },
         solid: (props) => ({
           container: {
-            bg: props.colorMode === "dark" ? "gray.600" : "gray.700",
+            bg: props.colorMode === 'dark' ? 'gray.600' : 'gray.700',
           },
         }),
       },

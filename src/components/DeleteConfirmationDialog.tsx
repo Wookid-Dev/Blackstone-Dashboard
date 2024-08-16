@@ -1,7 +1,15 @@
-"use client";
+'use client';
 
-import { Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter } from "@chakra-ui/react";
-import { useRef } from "react";
+import {
+  Button,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+  AlertDialogFooter,
+} from '@chakra-ui/react';
+import { useRef } from 'react';
 
 interface DeleteConfirmationDialogProps {
   isOpen: boolean;
@@ -9,7 +17,11 @@ interface DeleteConfirmationDialogProps {
   onConfirm: () => void;
 }
 
-const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({ isOpen, onClose, onConfirm }) => {
+const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
+  isOpen,
+  onClose,
+  onConfirm,
+}) => {
   const cancelRef = useRef<HTMLButtonElement>(null);
 
   return (
@@ -25,7 +37,8 @@ const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({ isO
           </AlertDialogHeader>
 
           <AlertDialogBody>
-            Are you sure you want to delete this task? This action cannot be undone.
+            Are you sure you want to delete this task? This action cannot be
+            undone.
           </AlertDialogBody>
 
           <AlertDialogFooter>

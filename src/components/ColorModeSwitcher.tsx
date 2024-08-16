@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { IconButton, useColorMode } from "@chakra-ui/react";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { IconButton, useColorMode } from '@chakra-ui/react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const ColorModeSwitcher = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -9,7 +9,7 @@ const ColorModeSwitcher = () => {
   return (
     <IconButton
       aria-label="Toggle color mode"
-      icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
+      icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
       onClick={toggleColorMode}
       variant="ghost"
       size="lg"
