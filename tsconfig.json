@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@store/*": ["store/*"],
+      "utils/*": ["utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "jest.config.js"],

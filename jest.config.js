@@ -4,6 +4,7 @@ export default {
   testEnvironment: 'jsdom', // or 'node', depending on your environment needs
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^utils/(.*)$': '<rootDir>/src/utils/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'], // Assuming you created this file for jest-dom matchers
 };
