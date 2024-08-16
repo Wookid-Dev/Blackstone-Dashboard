@@ -6,7 +6,6 @@ import {
   editTask,
   toggleTaskCompletion,
   selectFilteredAndSortedTasks,
-  Task,
 } from '../store/slices/taskSlice';
 import {
   Box,
@@ -27,6 +26,8 @@ import {
 import { useState } from 'react';
 import { MdFiberManualRecord } from 'react-icons/md';
 import DeleteConfirmationDialog from './DeleteConfirmationDialog';
+import { Task } from 'utils/types';
+import { Priority } from 'utils/enums';
 
 const TaskList = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const TaskList = () => {
   const [editedTitle, setEditedTitle] = useState<string>('');
   const [editedDescription, setEditedDescription] = useState<string>('');
   const [editedPriority, setEditedPriority] =
-    useState<Task['priority']>('Medium');
+    useState<Task['priority']>(Priority.Medium);
   const [isTitleError, setIsTitleError] = useState<boolean>(false);
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -89,7 +90,7 @@ const TaskList = () => {
       setEditingTaskId(null);
       setEditedTitle('');
       setEditedDescription('');
-      setEditedPriority('Medium');
+      setEditedPriority(Priority.Medium);
     }
   };
 
@@ -132,6 +133,9 @@ const TaskList = () => {
             boxShadow="sm"
             bg={taskCardBg}
             color={taskCardTextColor}
+            width="100%"
+            wordBreak="break-word"
+            overflow="hidden"
           >
             {editingTaskId === task.id ? (
               <>
