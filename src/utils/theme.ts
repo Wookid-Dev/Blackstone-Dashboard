@@ -1,4 +1,4 @@
-import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+import { extendTheme, ThemeConfig, StyleFunctionProps} from '@chakra-ui/react';
 
 const config: ThemeConfig = {
   initialColorMode: 'light',
@@ -8,7 +8,7 @@ const config: ThemeConfig = {
 const theme = extendTheme({
   config,
   styles: {
-    global: (props) => ({
+    global: (props: StyleFunctionProps) => ({
       body: {
         bg: props.colorMode === 'dark' ? 'gray.800' : '#f0f4f8',
         color: props.colorMode === 'dark' ? 'whiteAlpha.900' : 'gray.800',
@@ -24,7 +24,7 @@ const theme = extendTheme({
         },
       },
       variants: {
-        subtle: (props) => ({
+        subtle: (props: StyleFunctionProps) => ({
           container: {
             bg: props.colorMode === 'dark' ? 'gray.700' : 'gray.100',
           },
@@ -39,7 +39,7 @@ const theme = extendTheme({
             borderTop: '4px solid',
           },
         },
-        solid: (props) => ({
+        solid: (props: StyleFunctionProps) => ({
           container: {
             bg: props.colorMode === 'dark' ? 'gray.600' : 'gray.700',
           },
