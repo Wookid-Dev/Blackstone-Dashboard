@@ -15,17 +15,19 @@ import {
   VStack,
   Heading,
 } from '@chakra-ui/react';
+import { Task } from '../utils/types';
+import { Priority } from 'utils/enums';
 
 const TaskForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState<'High' | 'Medium' | 'Low'>('Medium');
+  const [priority, setPriority] = useState<Priority>(Priority.Medium); // Using enum
   const dispatch = useDispatch();
 
   const handleAddTask = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newTask = {
+    const newTask: Task = {
       id: uuidv4(),
       title,
       description,
@@ -66,13 +68,11 @@ const TaskForm = () => {
         <FormLabel>Priority</FormLabel>
         <Select
           value={priority}
-          onChange={(e) =>
-            setPriority(e.target.value as 'High' | 'Medium' | 'Low')
-          }
+          onChange={(e) => setPriority(e.target.value as Priority)}
         >
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
+          <option value={Priority.High}>High</option>
+          <option value={Priority.Medium}>Medium</option>
+          <option value={Priority.Low}>Low</option>
         </Select>
       </FormControl>
       <Button colorScheme="teal" type="submit" width="full">

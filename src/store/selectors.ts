@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from './index';
-import { Task } from './slices/taskSlice';
+import { Task } from '../utils/types';
 
 export const selectCompletedTasks = createSelector(
   (state: RootState) => state.tasks.tasks,

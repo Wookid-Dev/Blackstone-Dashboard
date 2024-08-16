@@ -1,28 +1,11 @@
-// src/store/slices/taskSlice.ts
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface Task {
-  id: string;
-  title: string;
-  description: string;
-  priority: 'High' | 'Medium' | 'Low';
-  completed: boolean;
-  createdAt: string;
-  completedAt?: string | null;
-  order: number;
-}
-
-interface TaskState {
-  tasks: Task[];
-  filterPriority: 'All' | 'High' | 'Medium' | 'Low';
-  sortOrder: 'asc' | 'desc';
-}
+import { Task, TaskState} from 'utils/types';
+import { Priority, SortOrder } from 'utils/enums';
 
 const initialState: TaskState = {
   tasks: [],
-  filterPriority: 'All',
-  sortOrder: 'asc',
+  filterPriority: Priority.All,
+  sortOrder: SortOrder.Asc,
 };
 
 const taskSlice = createSlice({
@@ -61,11 +44,11 @@ const taskSlice = createSlice({
     },
     setFilterPriority(
       state,
-      action: PayloadAction<'All' | 'High' | 'Medium' | 'Low'>,
+      action: PayloadAction<Priority>,
     ) {
       state.filterPriority = action.payload;
     },
-    setSortOrder(state, action: PayloadAction<'asc' | 'desc'>) {
+    setSortOrder(state, action: PayloadAction<SortOrder>) {
       state.sortOrder = action.payload;
     },
     // TODO: For when drag and drop implementation

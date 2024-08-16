@@ -11,11 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useRef } from 'react';
 
-interface DeleteConfirmationDialogProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-}
+import { DeleteConfirmationDialogProps } from 'utils/types';
 
 const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
   isOpen,
